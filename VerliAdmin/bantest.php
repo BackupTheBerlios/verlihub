@@ -37,12 +37,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 IF($_GET['nick'] || ValidateIP($_GET['ip'])) {
 	IF($_GET['nick'])
 	{
-	        $result = $DB_hub->Query("SELECT nick, ip FROM banlist WHERE nick LIKE '".$_GET['nick']."'");
-	        IF(ValidateIP($_GET['ip'])) $result .= " AND ip LIKE '".$_GET['ip']."'";
+                $query = "SELECT nick, ip FROM banlist WHERE nick LIKE '".$_GET['nick']."'";
+		IF(ValidateIP($_GET['ip'])) $query .= " AND ip LIKE '".$_GET['ip']."'";
+	        $query .= " AND (`date_limit` > UNIX_TIMESTAMP() OR `date_limit` IS NULL)";
+                $result = $DB_hub->Query($query);
 	}
         ELSE
         {
-                $result = $DB_hub->Query("SELECT nick, ip FROM banlist WHERE ip LIKE '".$_GET['ip']."'");
+                $result = $DB_hub->Query("SELECT nick, ip FROM banlist WHERE ip LIKE '".$_GET['ip']."' AND (`date_limit` > UNIX_TIMESTAMP() OR `date_limit` IS NULL)");
         }
 
 	IF($result->num_rows) {

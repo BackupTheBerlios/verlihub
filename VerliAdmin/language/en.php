@@ -382,7 +382,7 @@ $text_unban_reason =			"Unban reason";					//0.0.4
 $text_unban_request =			"Unban request";				//0.0.5
 $text_unbanlist =				"UnBanList";					//0.0.4
 $text_unbanned =				"Unbanned";						//0.3.1
-$text_unbans =					"Unbans";						//0.3.1
+
 $text_upload =					"Upload";						//0.3 RC1
 $text_upload_stats =			"Upload statistics";			//0.3 RC1
 $text_uptime =					"Uptime";						//0.3
@@ -427,16 +427,84 @@ $err_msg_user_exist =				"User already exists";		//0.0.2
 $err_msg_wrong_vtype =				"Entered value does`t match to requied variable type";//0.2.2
 
 $text_pi_plug =                         "Plugin manager";      //0.3.4
-$text_add_new_plugin =                            "Add new plugin";
-$text_path =                             "Path";
-$text_dest =                               "Dest";
-$text_detail =                               "Detail";
-$text_autoload =                               "Autoload";
-$text_reload =                               "Reload";
-$text_unload =                               "Unload";
-$text_error =                               "Error";
-$text_lastload =                               "Lastload";
-$text_edit_pi_plug =                     "Edit plugin";
-$text_delete_pi_plug =                     "Delete plugin";
+$text_add_new_plugin =                            "Add new plugin";   //0.3.4
+$text_path =                             "Path";      //0.3.4
+$text_dest =                               "Dest";               //0.3.4
+$text_detail =                               "Detail";           //0.3.4
+$text_autoload =                               "Autoload";       //0.3.4
+$text_reload =                               "Reload";           //0.3.4
+$text_unload =                               "Unload";           //0.3.4
+$text_error =                               "Error";             //0.3.4
+$text_lastload =                               "Lastload";       //0.3.4
+$text_loads =                                  "Loads";          //0.3.4
+$text_edit_plugin =                     "Edit plugin";          //0.3.4
+$text_delete_pi_plug =                     "Delete plugin";      //0.3.4
+
+$text_delplug_confirm =                    "Do you really want to delete the plugin"; //0.3.5
+$text_deltrig_confirm =                    "Do you really want to delete file trigger";     //0.3.5
+$text_deltype_confirm =                    "Do you really want to delete connection type";     //0.3.5
+
+$text_conn_types =                         "Connection types";      //0.3.5
+$text_add_new_type =                            "Add new type";   //0.3.5
+$text_identifier =                              "Identifier";      //0.3.5
+$text_description =                             "Description";     //0.3.5
+$text_tag_min_slots =                               "Min slots";        //0.3.5
+$text_tag_max_slots =                               "Max slots";        //0.3.5
+$text_tag_min_limit =                               "Min limit";         //0.3.5
+$text_tag_min_ls_ratio =                               "Min limit/slots";    //0.3.5
+$text_edit_type =                     "Edit type";          //0.3.5
+$text_delete_conn_types =                     "Delete type";      //0.3.5
+
+$text_unbans =					"Unban requests";						//0.3.6
+
+$text_month1 =     "Month";         //0.3.6
+$text_month2 =     "Months";         //0.3.6
+$text_month5 =     "Months";         //0.3.6
+$text_day1 =       "Day";            //0.3.6
+$text_day2 =       "Days";           //0.3.6
+$text_day5 =       "Days";           //0.3.6
+$text_hour1 =      "Hour";            //0.3.6
+$text_hour2 =      "Hours";           //0.3.6
+$text_hour5 =      "Hours";           //0.3.6
+
+$text_ban_types[0] = "Nick+IP";       //0.3.6
+$text_ban_types[1] = "IP Only";       //0.3.6
+$text_ban_types[2] = "Nick Only";      //0.3.6
+$text_ban_types[3] = "IP-Range";       //0.3.6
+$text_ban_types[4] = "Host 1";          //0.3.6
+$text_ban_types[5] = "Host 2";          //0.3.6
+$text_ban_types[6] = "Host 3";           //0.3.6
+$text_ban_types[7] = "Share (Unallowed share size)";         //0.3.6
+$text_ban_types[8] = "Email (ban the users email address)";  //0.3.6
+$text_ban_types[9] = "Prefix";                      //0.3.6
+$text_ban_types[10] = "HostR 1";                   //0.3.6
+
+$text_selecthub =    "Select HUB";            //0.3.6
+
+$text_pi_chatroom =     "Chatroom";              //0.3.7
+$text_add_new_room =                            "Add new room";   //0.3.7
+$text_nick =                              "Nick";      //0.3.7
+$text_topic =                             "Topic";     //0.3.7
+$text_creator =                               "Creator";        //0.3.7
+$text_min_class =                               "Min class";        //0.3.7
+$text_auto_class_min =                               "Min class Auto";         //0.3.7
+$text_auto_class_max =                               "Max class Auto";    //0.3.7
+$text_auto_cc =                               "Auto CC";    //0.3.7
+$text_edit_room =                     "Edit room";          //0.3.7
+$text_delete_chatroom =                     "Delete room";      //0.3.7
+$text_delroom_confirm =                    "Do you really want to delete the room"; //0.3.7
+
+$text_pi_forbid =     "Forbidden";              //0.3.7
+$text_add_new_word =                            "Add new word";   //0.3.7
+$text_word =                              "Word";      //0.3.7
+$text_check_mask =                             "Check mask";     //0.3.7
+$text_word_flag_1 =			"check public chat";				//0.3.3
+$text_word_flag_2 =			"check pm";		//0.3.3
+$text_word_flag_4 =			"notify opchat";		//0.3.3
+$text_afclass =                               "Affected class";        //0.3.7
+$text_banreason =                               "Ban reason";        //0.3.7
+$text_edit_word =                     "Edit forbidden word";          //0.3.7
+$text_delete_word =                     "Delete word";      //0.3.7
+$text_delword_confirm =                    "Do you really want to delete the word"; //0.3.7
 
 ?>

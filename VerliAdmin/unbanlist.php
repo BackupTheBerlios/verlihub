@@ -55,14 +55,6 @@ IF($_GET['filter'] != "" && $_GET['filter_colum'] != "")
 		{$query .= "%";}
 	$query .= "'";
 	}
-IF($_GET['filter_active'])
-	{
-	IF($_GET['filter'] != "" && $_GET['filter_colum'] != "")
-		{$query .= " AND";}
-    ELSE
-    	{$query = " WHERE";}
-	$query .= " date_limit > ".Time();
-	}
 
 $result = $DB_hub->Query("SELECT Count(ip) AS `count` FROM `unbanlist`".$query);
 $count = $result->Fetch_Assoc();
@@ -88,14 +80,12 @@ IF($debug[2]) {
 IF($pages > 1)
 	{Navigation();}
 ?>
-
 <TABLE class="fs9px b1">
 	<TR><FORM action="index.php" method="get">
 		<TD colspan=<?Print $colums;?> align="right" class="bg_light" nowrap>
 			<FONT class="b"><?Print $text_filter;?> : </FONT>
 			<INPUT name="q" type="hidden" value="unbanlist">
 			<INPUT name="orderby" type="hidden" value="<?Print $_GET['orderby'];?>">
-			<INPUT name="filter_active" id="filter_active" type="checkbox" value=1<?IF($_GET['filter_active']){Print " checked";} IF($_COOKIE['brwsr_tp'] != "Opera"){Print " class=\"b0\"";}?>><LABEL for="filter_active"><?Print $text_active_kicks;?></LABEL>&nbsp;&nbsp;
 			<FONT class="b"><?Print $text_colum;?> : </FONT>
 			<SELECT name="filter_colum">
 				<OPTION value=""> </OPTION>
@@ -150,11 +140,11 @@ IF($total > 0) {
 	$result = $DB_hub->Query($query);
 	WHILE($row = $result->Fetch_Assoc())
 		{
-		$row['nick'] = urlencode($row['nick']);
-		$row['nick_op'] = urlencode($row['nick_op']);
-		$row['unban_op'] = urlencode($row['unban_op']);
-		$row['ban_reason'] = urlencode($row['ban_reason']);
-		$row['unban_reason'] = urlencode($row['unban_reason']);
+		$row['nick'] = htmlspecialchars($row['nick']);
+		$row['nick_op'] = htmlspecialchars($row['nick_op']);
+		$row['unban_op'] = htmlspecialchars($row['unban_op']);
+		$row['ban_reason'] = htmlspecialchars($row['ban_reason']);
+		$row['unban_reason'] = htmlspecialchars($row['unban_reason']);
 
 		$info =  $text_ban_type." : ".$row['ban_type']."<BR>";
 		$info .= $text_ip." : ".$row['ip']."<BR>";
@@ -174,9 +164,10 @@ IF($total > 0) {
 		$info .= $text_unban_op." : ".$row['unban_op']."<BR>";
 		$info .= $text_ban_reason." :<BR>".EregI_Replace("(\r)?\n", "<BR>", $row['reason'])."<BR>";
 		$info .= $text_unban_reason." :<BR>".EregI_Replace("(\r)?\n", "<BR>", $row['unban_reason']);
+		$info = htmlspecialchars($info);
 ?>
 		<TR onmouseover="JavaScript: return escape('<?Print AddSlashes($info);?>');">
-			<TD class="bg_light"><IMG src="img/info.gif" title="<?Print urlencode($info);?>" widht=16 height=16></TD>
+			<TD class="bg_light"><IMG src="img/info.gif" title="<?Print $info;?>" widht=16 height=16></TD>
 			<?IF($VA_setup['unbanlist_ban_type']){?><TD align="right" class="bg_light"><?	Print $row['ban_type'];?></TD><?}?>
 			<?IF($VA_setup['unbanlist_ip']){?><TD class="bg_light"><?Print $row['ip']?></TD><?}?>
 			<?IF($VA_setup['unbanlist_nick']){?><TD class="bg_light"><?Print $row['nick'];?></TD><?}?>

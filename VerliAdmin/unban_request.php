@@ -48,10 +48,10 @@ IF($_POST['send'] && $_POST['comment']) {
 	}
 
 //	Taulka banu
-IF(NickExist($_GET['nick'], $DB_hub))
+/*IF(NickExist($_GET['nick'], $DB_hub))
 	$result = $DB_hub->Query("SELECT * FROM banlist WHERE nick LIKE '".$_GET['nick']."'");
-ELSE
-	$result = $DB_hub->Query("SELECT * FROM banlist WHERE nick LIKE '".$_GET['nick']."' OR ip = '".$_GET['ip']."'");
+ELSE*/
+	$result = $DB_hub->Query("SELECT * FROM banlist WHERE nick LIKE '".$_GET['nick']."' AND ip = '".$_GET['ip']."' AND (`date_limit` > UNIX_TIMESTAMP() OR `date_limit` IS NULL)");
 
 IF($result->num_rows) {?>
 	<TABLE class="b1 fs10px">
@@ -83,8 +83,7 @@ IF($result->num_rows) {?>
 			<TD class="bg_light">&nbsp;&nbsp;<?Print HTMLSpecialChars($ban['ip']);?>&nbsp;&nbsp;</TD>
 			<TD class="bg_light b right">&nbsp;&nbsp;<?Print $text_date_limit;?>&nbsp;:&nbsp;</TD>
 			<TD class="bg_light">&nbsp;&nbsp;<?Print Date($VA_setup['timedate_format'], $ban['date_limit']);?>&nbsp;&nbsp;</TD>
-			<TD class="bg_light b right">&nbsp;&nbsp;<?Print $text_remaining;?>&nbsp;:&nbsp;</TD>
-			<TD class="bg_light">&nbsp;&nbsp;<?Print UpTime($ban['date_limit'] - Time());?>&nbsp;&nbsp;</TD>
+			<TD class="bg_light" colspan=2>
 		</TR><TR>
 			<TD class="bg_light b top right">&nbsp;&nbsp;<?Print $text_reason;?>&nbsp;:&nbsp;</TD>
 			<TD class="bg_light top" colspan=5>&nbsp;&nbsp;<?Print nl2br(HTMLSpecialChars($ban['reason']));?>&nbsp;&nbsp;</TD>
@@ -143,6 +142,19 @@ ELSE {
 		</TR><TR>
 			<TD class="b bg_light right">&nbsp;&nbsp;<?Print $text_ip;?>&nbsp;&nbsp;</TD>
 			<TD class="bg_light">&nbsp;&nbsp;<?Print $_GET['ip'];?>&nbsp;&nbsp;</TD>
+		</TR><TR>
+			<TD class="b bg_light right">&nbsp;&nbsp;<?Print $text_email;?>&nbsp;&nbsp;</TD>
+			<TD class="bg_light">
+                        <?
+                          IF(NickExist($_GET['nick'], $DB_hub)) 
+                          {
+                          	$result = $DB_hub->Query("SELECT * FROM reglist WHERE nick LIKE '".$_GET['nick']."'");
+                          	$row = $result->Fetch_Assoc();
+                          	Print $row['email'];
+                          	Print "<INPUT class=\"w160px\" name=\"email\" type=\"hidden\" value=".$row['email'].">";
+                          }
+                          ELSE Print "<INPUT class=\"w160px\" name=\"email\" type=\"text\">";
+                        ?>&nbsp;&nbsp;</TD>
 		</TR><TR>
 			<TD class="b bg_light right top">&nbsp;&nbsp;<?Print $text_comment;?>&nbsp;&nbsp;</TD>
 			<TD class="bg_light"><TEXTAREA class="w300px" name="comment" rows=3></TEXTAREA></TD>

@@ -54,39 +54,25 @@ IF($_GET['orderby'] == ""){$_GET['orderby'] = $VA_setup['kicklist_order_by'];}
 IF($_GET['filter'] != "" && $_GET['filter_colum'] != "") {
 	IF($VA_setup['create_indexes'])
 		Create_Index($DB_hub, "kicklist", $_GET['filter_colum']);
-	
+
 	IF($_GET['filter_colum'] == "time")
 		{$filter = DateToInt($_GET['filter']);}
 	ELSE
 		{$filter = $_GET['filter'];}
-	
+
 	IF($_GET['filter_type'] == "less")
 		{$query = " WHERE `".$_GET['filter_colum']."` < '";}
 	ELSEIF($_GET['filter_type'] == "greater")
 		{$query = " WHERE `".$_GET['filter_colum']."` > '";}
 	ELSE
 		{$query = " WHERE `".$_GET['filter_colum']."` LIKE '";}
-	
+
 	IF($_GET['filter_type'] == "contains" || $_GET['filter_type'] == "ends")
 		{$query .= "%";}
 	$query .= $DB_hub->Real_Escape_String($filter);
 	IF($_GET['filter_type'] == "contains" || $_GET['filter_type'] == "begins")
 		{$query .= "%";}
 	$query .= "'";
-	}
-IF($_GET['filter_active'])
-	{
-	IF($_GET['filter'] != "" && $_GET['filter_colum'] != "")
-		{$query .= " AND";}
-    ELSE
-    	{$query = " WHERE";}
-
-	IF($VH_setup['tban_kick'])
-		{$time = Time() - $VH_setup['tban_kick'];}
-	ELSE
-		{$time = Time() - 300;}
-
-	$query .= " `time` > ".$time;
 	}
 
 $result = $DB_hub->Query("SELECT Count(ip) AS `count` FROM kicklist".$query);
@@ -99,7 +85,7 @@ $first = $VA_setup['kicklist_results'] * ($_GET['page'] - 1);
 $colums  = $VA_setup['kicklist_nick'] + $VA_setup['kicklist_time'];
 $colums += $VA_setup['kicklist_ip'] + $VA_setup['kicklist_host'];
 $colums += $VA_setup['kicklist_share_size'] + $VA_setup['kicklist_email'];
-$colums += $VA_setup['kicklist_op'] + $VA_setup['kicklist_reason'] + 1;
+$colums += $VA_setup['kicklist_op'] + $VA_setup['kicklist_reason'];
 
 $query  = "SELECT * FROM kicklist".$query;
 $query .= " ORDER BY ".$DB_hub->Real_Escape_String($_GET['orderby'])." LIMIT ".$first.",".$VA_setup['kicklist_results'];
@@ -134,8 +120,6 @@ IF($VA_setup['kicklist_unkick_class'] <= USR_CLASS) {
 		<INPUT name="q" type="hidden" value="kicklist">
 		<INPUT name="orderby" type="hidden" value="<?Print $_GET['orderby'];?>">
 		<TD colspan=<?Print $colums;?> align="right" class="bg_light" nowrap>
-			<FONT class="b"><?Print $text_filter;?> : </FONT>
-			<INPUT id="filter_active" name="filter_active" type="checkbox" value=1<?IF($_GET['filter_active']){Print " checked";} IF($_COOKIE['brwsr_tp'] != "Opera"){Print " class=\"b0\"";}?>><LABEL for="filter_active"><?Print $text_active_kicks;?></LABEL>&nbsp;&nbsp;
 			<FONT class="b"><?Print $text_colum;?> : </FONT>
 			<SELECT name="filter_colum" size=1>
 				<OPTION></OPTION>
@@ -164,7 +148,6 @@ IF($VA_setup['kicklist_unkick_class'] <= USR_CLASS) {
 			<INPUT class="w75px" type="submit" value="<?Print $text_show;?>" class="12px">
 		</TD></FORM>
 	</TR><TR>
-		<TD width=16 class="bg_light">&nbsp;</TD>
 		<?IF($VA_setup['kicklist_nick']){?><TD class="b bg_light" nowrap><?Print $text_nick; PrintOrderBy("nick");?></TD><?}?>
 		<?IF($VA_setup['kicklist_time']){?><TD class="b bg_light" nowrap><?Print $text_time; PrintOrderBy("time");?></TD><?}?>
 		<?IF($VA_setup['kicklist_ip']){?><TD class="b bg_light" nowrap><?Print $text_ip; PrintOrderBy("ip");?></TD><?}?>
@@ -201,11 +184,7 @@ IF($total > 0) {
 			<FORM action="index.php?<?Print $_SERVER['QUERY_STRING'];?>" method="post">
 				<INPUT name="nick" type="hidden" value="<?Print $row['nick'];?>">
 				<INPUT name="time" type="hidden" value="<?Print $row['time'];?>">
-			<TD class="bg_light">
-				<?IF($VA_setup['banlist_unban_class'] <= USR_CLASS){?><INPUT type="image" src="img/unban.gif" title="<?Print $text_unban;?>" class="b0"><?}?>
-			<?IF($browser != "Mozilla") {Print "</TD>";}?>
 			</FORM>
-			
 			<?IF($VA_setup['kicklist_nick']){?><TD class="bg_light"><?Print $row['nick'];?></TD><?}?>
 			<?IF($VA_setup['kicklist_time']){?><TD align="right" class="bg_light"><?Print Date($VA_setup['timedate_format'], $row['time']);?></TD><?}?>
 			<?IF($VA_setup['kicklist_ip']){?><TD class="bg_light"><?Print $row['ip'];?></TD><?}?>
@@ -229,7 +208,6 @@ ELSE {?>
 	</TR>
 <?	}?>
 	<TR>
-		<TD class="bg_light">&nbsp;</TD>
 		<?IF($VA_setup['kicklist_nick']){?><TD class="b bg_light" nowrap><?Print $text_nick; PrintOrderBy("nick");?></TD><?}?>
 		<?IF($VA_setup['kicklist_time']){?><TD class="b bg_light" nowrap><?Print $text_time; PrintOrderBy("time");?></TD><?}?>
 		<?IF($VA_setup['kicklist_ip']){?><TD class="b bg_light" nowrap><?Print $text_ip; PrintOrderBy("ip");?></TD><?}?>

@@ -69,7 +69,7 @@ FUNCTION Check_Index($link, $table, $colum) {
 FUNCTION Change_URL_Query() {
 	GLOBAL $_SERVER;
 	$new_query = "";
-	
+
 	$num_args = Func_Num_Args();
 	$query = Explode("&", $_SERVER['QUERY_STRING']);
 
@@ -191,7 +191,7 @@ FUNCTION Get_IP_From_Range($range) {
 	$range = $range * 256;
 	$c = (int)$range;
 	$range -= $c;
-	
+
 	$d = $range * 256;
 	
 	$ip = $a.".".$b.".".$c.".".$d;
@@ -269,9 +269,9 @@ FUNCTION GetMicroTime($time = 0) {
 
 FUNCTION GetTables($link) {
 	$result = $link->Query("SHOW TABLE STATUS");
-	
+
 	GLOBAL $tables;
-	
+
 	WHILE($row = $result->Fetch_Assoc()) {
 		$tables[StrToLower($row['Name'])]['name'] = $row['Name'];
 		$tables[StrToLower($row['Name'])]['rows'] = $row['Rows'];
@@ -287,10 +287,9 @@ FUNCTION GetTables($link) {
 
 FUNCTION GetValues($in) {
 	$in = (string)DecBin($in);
-	
 	WHILE($in != "") {
-		$out[] = SubStr($in, 0, 1);
-		$in = SubStr($in, 1);
+		$out[] = SubStr($in, strlen($in)-1, 1);
+		$in = SubStr($in, 0, strlen($in)-1);
 		}
 
 	$out = Array_Pad($out, 10, 0);
@@ -501,11 +500,11 @@ FUNCTION Unban($unban_type, $key, $reason) {
 	GLOBAL $DB_hub;
 	
 	IF($unban_type == 1 || ($unban_type == 0 && ValidateIP($key)))
-		$result  = $DB_hub->Query("SELECT * FROM banlist WHERE ip = '".$key."' AND date_limit > UNIX_TIMESTAMP()");
+		$result  = $DB_hub->Query("SELECT * FROM banlist WHERE ip LIKE '".$key."' AND (`date_limit` > UNIX_TIMESTAMP() OR `date_limit` IS NULL)");
 	ELSEIF($unban_type == 2 || $unban_type == 0)
-		$result  = $DB_hub->Query("SELECT * FROM banlist WHERE nick LIKE '".$key."' AND date_limit > UNIX_TIMESTAMP()");
+		$result  = $DB_hub->Query("SELECT * FROM banlist WHERE nick LIKE '".$key."' AND (`date_limit` > UNIX_TIMESTAMP() OR `date_limit` IS NULL)");
 	ELSEIF($unban_type == 3)
-		$result  = $DB_hub->Query("SELECT * FROM banlist WHERE range_fr < '".$key."' AND range_to > '".$key."' AND date_limit > UNIX_TIMESTAMP()");
+		$result  = $DB_hub->Query("SELECT * FROM banlist WHERE range_fr < '".$key."' AND range_to > '".$key."' AND (`date_limit` > UNIX_TIMESTAMP() OR `date_limit` IS NULL)");
 	
 	WHILE($ban = $result->Fetch_Assoc()) {
 		IF($unban_type == 0) {
@@ -513,26 +512,30 @@ FUNCTION Unban($unban_type, $key, $reason) {
 			$ip = $ban['ip'];
 			}
 		ELSEIF($unban_type == 1) {
-			$nick = "_ipban_";
-			$ip = $ban['ip'];
-			}
-		ELSEIF($unban_type == 2) {
 			$nick = $ban['nick'];
 			$ip = "_nickban_";
+			}
+		ELSEIF($unban_type == 2) {
+			$nick = "_ipban_";
+			$ip = $ban['ip'];
 			}
 		ELSEIF($unban_type == 3) {
 			$nick = "_rangeban_";
 			$ip = $ban['ip'];
 			}
-		
-		$DB_hub->Query("REPLACE INTO unbanlist VALUES (".$unban_type.", '".$ip."', '".$nick."', '".$ban['host']."', '".$ban['share_size']."', '".$ban['email']."', '".$ban['range_fr']."', '".$ban['range_to']."', '".$ban['date_start']."', '".$ban['date_limit']."', UNIX_TIMESTAMP(), '".$ban['nick_op']."', '".USR_NICK."', '".$ban['reason']."', '".$reason."')");
 
-		IF($unban_type == $ban['ban_type']) 
-			$DB_hub->Query("DELETE FROM banlist WHERE nick = '".$ban['nick']."' AND ip = '".$ban['ip']."'");
-		ELSEIF($unban_type == 1)
-			$DB_hub->Query("UPDATE banlist SET ban_type = 2, nick = '".$ban['nick']."', ip = '_nickban_' WHERE nick = '".$ban['nick']."' AND ip = '".$ban['ip']."'");
-		ELSEIF($unban_type == 2)
-			$DB_hub->Query("UPDATE banlist SET ban_type = 1, nick = '_ipban_', ip = '".$ban['ip']."' WHERE nick = '".$ban['nick']."' AND ip = '".$ban['ip']."'");
+//		$DB_hub->Query("REPLACE INTO unbanlist (ban_type, ip, nick, host, share_size, email, range_fr, range_to, date_start, date_limit, date_unban, nick_op, unban_op, reason, unban_reason) VALUES (".$unban_type.", '".$ip."', '".$nick."', '".$ban['host']."', '".$ban['share_size']."', '".$ban['email']."', '".$ban['range_fr']."', '".$ban['range_to']."', '".$ban['date_start']."', '".$ban['date_limit']."', UNIX_TIMESTAMP(), '".$ban['nick_op']."', '".USR_NICK."', '".$ban['reason']."', '".$reason."')");
+
+		IF($unban_type == $ban['ban_type'])
+			$DB_hub->Query("DELETE FROM banlist WHERE nick LIKE '".$ban['nick']."' AND ip LIKE '".$ban['ip']."'");
+		ELSEIF($unban_type == 1 && $ban['nick']!="_ipban_")
+			$DB_hub->Query("UPDATE banlist SET ban_type = 2, nick = '".$ban['nick']."', ip = '_nickban_' WHERE nick LIKE '".$ban['nick']."' AND ip LIKE '".$ban['ip']."'");
+		ELSEIF($unban_type == 1 && $ban['nick']=="_ipban_")
+                        $DB_hub->Query("DELETE FROM banlist WHERE ip LIKE '".$ban['ip']."'");
+		ELSEIF($unban_type == 2 && $ban['ip']!="_nickban_")
+			$DB_hub->Query("UPDATE banlist SET ban_type = 1, nick = '_ipban_', ip = '".$ban['ip']."' WHERE nick LIKE '".$ban['nick']."' AND ip LIKE '".$ban['ip']."'");
+		ELSEIF($unban_type == 2 && $ban['ip']=="_nickban_")
+                        $DB_hub->Query("DELETE FROM banlist WHERE nick LIKE '".$ban['nick']."'");
 		}
 
 	RETURN;
@@ -547,65 +550,70 @@ FUNCTION UpTime($time) {
 	GLOBAL $text_hour1, $text_hour2, $text_hour5;
 	GLOBAL $text_minute1, $text_minute2, $text_minute5;
 	GLOBAL $text_second1, $tex_second2, $text_second5;
-	
+
 	IF($year = (int)Date("Y", $time) - 1970) {
 		$str = $year." ";
 		IF($year >= 5)
-			$srt .= $text_year5;
+			$str .= $text_year5;
 		ELSEIF($year >= 2)
-			$srt .= $text_year2;
+			$str .= $text_year2;
 		ELSE
-			$srt .= "aaa";
+			$str .= $text_year1;
+		$str .=", ";
 		}
-	
+
 	IF($month = (int)Date("m", $time)) {
-		$str .= ", ".$month." ";
+		$str .= $month." ";
 		IF($month >= 5)
-			$srt .= $text_month5;
+			$str .= $text_month5;
 		ELSEIF($month >= 2)
-			$srt .= $text_month2;
+			$str .= $text_month2;
 		ELSE
-			$srt .= $text_month1;
+			$str .= $text_month1;
+		$str .=", ";
 		}
 
 	IF($day = (int)Date("d", $time)) {
-		$str .= ", ".$day." ";
+		$str .= $day." ";
 		IF($day >= 5)
-			$srt .= $text_day5;
+			$str .= $text_day5;
 		ELSEIF($day >= 2)
-			$srt .= $text_day2;
+			$str .= $text_day2;
 		ELSE
-			$srt .= $text_day1;
+			$str .= $text_day1;
+		$str .=", ";
 		}
-		
-	IF($hour = (int)Date("h", $time)) {
-		$str .= ", ".$hour." ";
+
+	IF($hour = (int)Date("H", $time)) {
+		$str .= $hour." ";
 		IF($hour >= 5)
-			$srt .= $text_hour5;
+			$str .= $text_hour5;
 		ELSEIF($hour >= 2)
-			$srt .= $text_hour2;
+			$str .= $text_hour2;
 		ELSE
-			$srt .= $text_hour1;
+			$str .= $text_hour1;
+		$str .=", ";
 		}
 
 	IF($min = (int)Date("i", $time)) {
-		$str .= ", ".$min." ";
+		$str .= $min." ";
 		IF($min >= 5)
-			$srt .= $text_minute5;
+			$str .= $text_minute5;
 		ELSEIF($min >= 2)
-			$srt .= $text_minute2;
+			$str .= $text_minute2;
 		ELSE
-			$srt .= $text_minute1;
+			$str .= $text_minute1;
+		$str .=", ";
 		}
-		
+
 	IF($sec = (int)Date("s", $time)) {
-		$str .= ", ".$sec." ";
+		$str .= $sec." ";
 		IF($sec >= 5)
-			$srt .= $text_second5;
+			$str .= $text_second5;
 		ELSEIF($sec >= 2)
-			$srt .= $text_second2;
+			$str .= $text_second2;
 		ELSE
-			$srt .= $text_second1;
+			$str .= $text_second1;
 		}
 
 	RETURN $str;
@@ -616,7 +624,7 @@ FUNCTION UpTime($time) {
 FUNCTION VA_Alert($message, $icon, $url) {
 	GLOBAL $text_ok;
 	?>
-		
+
 	<BR><BR>
 	<FORM action="<?Print $url;?>" method="post">
 	<TABLE align="center" class="b1 fs11px" width=350>
@@ -667,4 +675,3 @@ FUNCTION ValidateIP($ip)
 		{RETURN FALSE;}
 	}
 ?>
-

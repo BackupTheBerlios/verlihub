@@ -23,14 +23,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 IF($VA_setup['banlist_unban_class'] > USR_CLASS)
 	{Die(VA_Message($err_msg_no_access, "error"));}
 
-IF($_POST['unban_reason'] != "" && $_PsOST['unban'])
+IF($_POST['unban_reason'] != "" && $_POST['unban'])
 	{
-//	Include "config.php";
-//	Include "version.php";
-//	Include "library.php";
-//	Include "verify.php";
-//	Include "language.php";
-	
+
 	$result = $DB_hub->Query("SELECT * FROM banlist WHERE ip='".$_POST['ip']."' AND nick='".$_POST['nick']."' AND date_start='".$_POST['date_start']."'");
 	IF($result->num_rows == 1)
 		{

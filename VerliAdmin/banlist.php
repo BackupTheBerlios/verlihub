@@ -63,11 +63,15 @@ IF($_GET['filter'] != "" && $_GET['filter_colum'] && $_GET['filter_type']) {
 	}
 IF($_GET['filter_active']) {
 	IF($_GET['filter'] != "" && $_GET['filter_colum'] != "")
-		{$query .= " AND";}
-    ELSE
-    	{$query = " WHERE";}
-	$query .= " date_limit > ".Time();
-	}
+	{
+		$query .= " AND";
+        }
+        ELSE
+    	{
+    		$query .= " WHERE";
+        }
+	        $query .= " `date_limit` > UNIX_TIMESTAMP() OR `date_limit` IS NULL";
+}
 
 $result = $DB_hub->Query("SELECT Count(ip) AS `count` FROM `banlist`".$query);
 $count = $result->Fetch_Assoc();
@@ -201,8 +205,8 @@ IF($total > 0) {
 					{?><IMG src="img/space.gif" width=16 height=16><?}
 			IF($browser != "Mozilla") {Print "</TD>";}?>
 			</FORM>
-			
-			<?IF($VA_setup['banlist_ban_type']){?><TD align="right" class="bg_light"><?Print $row['ban_type'];?></TD><?}?>
+
+			<?IF($VA_setup['banlist_ban_type']){?><TD align="right" class="bg_light"><?Print $text_ban_types[$row['ban_type']];?></TD><?}?>
 			<?IF($VA_setup['banlist_ip']){?><TD class="bg_light"><?Print $row['ip'];?></TD><?}?>
 			<?IF($VA_setup['banlist_nick']){?><TD class="bg_light"><?Print $row['nick'];?></TD><?}?>
 			<?IF($VA_setup['banlist_host']){?><TD class="bg_light"><?Print $row['host'];?></TD><?}?>
