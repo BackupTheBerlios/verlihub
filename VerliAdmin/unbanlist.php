@@ -35,7 +35,7 @@ IF($_GET['filter'] != "" && $_GET['filter_colum'] != "")
 	{
 	IF($VA_setup['create_indexes'])
 		Create_Index($DB_hub, "unbanlist", $_GET['filter_colum']);
-	
+
 	IF($_GET['filter_colum'] == "date_start" || $_GET['filter_colum'] == "date_limit" || $_GET['filter_colum'] == "date_unban")
 		{$filter = DateToInt($_GET['filter']);}
 	ELSE
@@ -150,12 +150,12 @@ IF($total > 0) {
 	$result = $DB_hub->Query($query);
 	WHILE($row = $result->Fetch_Assoc())
 		{
-		$row['nick'] = HTMLSpecialChars($row['nick']);
-		$row['nick_op'] = HTMLSpecialChars($row['nick_op']);
-		$row['unban_op'] = HTMLSpecialChars($row['unban_op']);
-		$row['ban_reason'] = HTMLSpecialChars($row['ban_reason']);
-		$row['unban_reason'] = HTMLSpecialChars($row['unban_reason']);
-	
+		$row['nick'] = urlencode($row['nick']);
+		$row['nick_op'] = urlencode($row['nick_op']);
+		$row['unban_op'] = urlencode($row['unban_op']);
+		$row['ban_reason'] = urlencode($row['ban_reason']);
+		$row['unban_reason'] = urlencode($row['unban_reason']);
+
 		$info =  $text_ban_type." : ".$row['ban_type']."<BR>";
 		$info .= $text_ip." : ".$row['ip']."<BR>";
 		$info .= $text_nick." : ".$row['nick']."<BR>";
