@@ -1,0 +1,19 @@
+//0.3.4
+-Added confirm for file_trigger deleting
+-Fixed several misspellings, and syntax errors, especially where the function has a paramter like '$link'
+-Some error in stats.php
+-Added plugin manager
+
+//0.3.5
+-Fixed plugin manager editing
+-Added confirmation on deleting to file_trigger and plugin_manager
+-Added conn_types
+
+//0.3.6
+-Moved all VerliAdmin config to SQL
+-Finished unban request
+-Finished UpTime() function
+-Added description to ban_type
+-Merged MultiVerliAdmin and VerliAdmin (You can change to MultiVerliAdmin by setting 'multi' in config.php to 1)
+-Upgraded setuphelp.sql and setuplist.sql
+
