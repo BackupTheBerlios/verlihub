@@ -25,12 +25,6 @@ CREATE TABLE IF NOT EXISTS `setuphelp` (
 PRIMARY KEY ( `var` ) ); 
 
 # -------------------------------------------------------------------
-# Update version =< 0.2.5
-
-UPDATE setuphelp SET var='setuplist_min_class' WHERE var='setuplist_class_view';
-UPDATE setuphelp SET var='setuplist_edit_class' WHERE var='setuplist_class_edit';
-
-# -------------------------------------------------------------------
 # VerliAdmin configuration help
 
 INSERT delayed ignore INTO setuphelp VALUES ('min_class', 'class', 'Min class which will be allowed to enter VerliAdmin', 'now');
@@ -40,7 +34,7 @@ INSERT delayed ignore INTO setuphelp VALUES ('date_format', 'string', 'Date form
 INSERT delayed ignore INTO setuphelp VALUES ('time_format', 'string', 'Time format (PHP syntax)', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('timedate_format', 'string', 'Date & time format (PHP syntax)', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('create_indexes', 'boolean', 'If 1 VA automaticly index tables for faster queries (increase table size)', 'now');
-INSERT delayed ignore INTO setuphelp VALUES ('user_images', 'boolean', 'Perl regular expresions for icon before nick in reglist and in top-left information table. Expresion and image are separated by \',\' and ended with \';\'', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('user_images', 'text', 'Perl regular expresions for icon before nick in reglist and in top-left information table. Expresion and image are separated by \',\' and ended with \';\'', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('time_format', 'text', '', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('log_login', 'boolean', 'Log logins and logouts in VerliAdmin', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('log_addreg', 'boolean', 'Log adding of new users', 'now');
@@ -139,6 +133,7 @@ INSERT delayed ignore INTO setuphelp VALUES ('file_trigger_def', 'boolean', 'Sho
 INSERT delayed ignore INTO setuphelp VALUES ('file_trigger_descr', 'boolean', 'Show descr colum in file_trigger', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('file_trigger_minclass', 'boolean', 'Show min_class colum in file_trigger', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('file_trigger_maxclass', 'boolean', 'Show min_class colum in file_trigger', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('file_trigger_flags', 'boolean', 'Show flags colum in file_trigger', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('messanger_min_class', 'class', 'Minimum class to access messages. Disable if you don`t have that plugin', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('messanger_min_post_class', 'class', 'Minimum class to post messages', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('messanger_order_by', 'string', 'Default order of messages', 'now');
@@ -163,7 +158,50 @@ INSERT delayed ignore INTO setuphelp VALUES ('userlog_info', 'boolean', 'Show \'
 INSERT delayed ignore INTO setuphelp VALUES ('stats_min_class', 'class', 'Minimum class to access statisctis', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('stats_plugin', 'boolean', 'Enable if you have statistic plugin', 'now');
 INSERT delayed ignore INTO setuphelp VALUES ('commands_min_class', 'class', 'Minimum class to access help page', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('version','int','VerliAdmin version', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_min_class', 'class', 'Minimum class to access plugin manager', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_edit_class', 'class', 'Minimum class to edit plugins', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_order_by', 'string', 'Default order of plugins', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_results', 'int', 'Number of plugins per page', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_nick', 'boolean', 'Show nick colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_path', 'boolean', 'Show path colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_dest', 'boolean', 'Show dest colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_detail', 'boolean', 'Show detail colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_autoload', 'boolean', 'Show autoload colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_reload', 'boolean', 'Show reload colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_unload', 'boolean', 'Show unload colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_error', 'boolean', 'Show error colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_plug_lastload', 'boolean', 'Show lastload colum in pi_plug', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_min_class', 'class', 'Minimum class to access connection types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_edit_class', 'class', 'Minimum class to edit connection types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_order_by', 'string', 'Default order of connection types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_results', 'int', 'Number of connection types per page', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_identifier', 'boolean', 'Show identifier colum in conn_types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_description', 'boolean', 'Show description colum in conn_types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_tag_min_slots', 'boolean', 'Show tag_min_slots colum in conn_types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_tag_max_slots', 'boolean', 'Show tag_max_slots colum in conn_types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_tag_min_limit', 'boolean', 'Show tag_min_limit colum in conn_types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('conn_types_tag_min_ls_ratio', 'boolean', 'Show tag_min_ls_ratio colum in conn_types', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_min_class', 'class', 'Minimum class to access chatroom', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_edit_class', 'class', 'Minimum class to edit chatrooms', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_order_by', 'string', 'Default order of chatrooms', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_results', 'int', 'Number of chatroomss per page', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_nick', 'boolean', 'Show nick colum in pi_chatroom', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_topic', 'boolean', 'Show topic colum in pi_chatroom', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_creator', 'boolean', 'Show creator colum in pi_chatroom', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_min_class', 'boolean', 'Show min_class colum in pi_chatroom', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_auto_class_min', 'boolean', 'Show auto_class_min colum in pi_chatroom', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_auto_class_max', 'boolean', 'Show auto_class_max colum in pi_chatroom', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_chatroom_auto_cc', 'boolean', 'Show auto_cc colum in pi_chatroom', 'now');
 
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_min_class', 'class', 'Minimum class to access forbidden words', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_edit_class', 'class', 'Minimum class to edit forbidden words', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_order_by', 'string', 'Default order of forbidden words', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_results', 'int', 'Number of forbidden words per page', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_word', 'boolean', 'Show word colum in pi_forbid', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_check_mask', 'boolean', 'Show check_mask colum in pi_forbid', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_afclass', 'boolean', 'Show afclass colum in pi_forbid', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('pi_forbid_banreason', 'boolean', 'Show banreason colum in pi_forbid', 'now');
 # -------------------------------------------------------------------
 # Verlihub configuration help
 
@@ -335,3 +373,26 @@ INSERT delayed ignore INTO setuphelp VALUES ('classdif_download','int','class di
 INSERT delayed ignore INTO setuphelp VALUES ('classdif_pm','int','class difference for private msg','now');
 INSERT delayed ignore INTO setuphelp VALUES ('classdif_reg','int','class difference for registering users','now');
 INSERT delayed ignore INTO setuphelp VALUES ('classdif_kick','int','class difference for kicking', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('opchat_desc','string','description field of the opchat', 'not');
+INSERT delayed ignore INTO setuphelp VALUES ('hub_security_desc','string','description field of the hub-security', 'not');
+INSERT delayed ignore INTO setuphelp VALUES ('dest_regme_chat', 'boolean', 'send +regme to main chat instead of opchat PM', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('dest_report_chat', 'boolean', 'send +report to main chat instead of opchat PM', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('cmd_start_op', 'string', 'characters which the operator commands/triggers are allowed to start with', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('cmd_start_user', 'string', 'characters which the NON-operator commands are allowed to start with ', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('min_search_chars', 'int', 'minimal length of a search query, applies on users < operators', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('int_chat_ms', 'int', 'minimal number of miliseconds allowed interval between main chat messages from one user', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('int_nicklist', 'int', 'minimum number of seconds between two requests of nick list of one user', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('dest_drop_chat', 'boolean', '1 means the drop notifications will go into main chat (for ops only) else they will go into the opchat', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('show_dec_len', 'int', 'if negative whole description is left, else description is cut to goven length (for ops this depends on value of show_tags)', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('show_email', 'boolean', '1 keeps emails in My_INFO ; 0 removes it (for ops this depends on value of show_tags)', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('min_class_use_hub', 'class', 'minimal class that is allowed to search & download in the hub', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('timeout_myinfo', 'int', 'user login timeout (default: 40)', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('report_dns_resolve', 'boolean', 'enable host resolving in the opchat reports of the users', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('min_class_redir', 'class', 'min class for operator force move', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('msg_welcome_guest', 'string', 'message sent to all when a guest user logs in', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('msg_welcome_reg', 'string', 'message sent to all when a reg (class=1) user logs in', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('min_class_bc', 'class', 'min class for sending broadcast (default: 4)', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('min_class_bc_regs', 'class', 'min class for sending broadcast for registred users (default: 4)', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('hub_version_special', 'string', 'a string appended after the version number in the first ("welcome") message for newly connected users', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('tag_allow_sock5', 'boolean', 'this allows/prohibits users with SOCKS5 connection to enter the hub', 'now');
+INSERT delayed ignore INTO setuphelp VALUES ('min_class_register', 'class', 'minimum class of users that can perform registration commands !reg* ; this used to be 4, and 4 is the default value', 'now');
