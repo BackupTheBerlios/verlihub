@@ -3,11 +3,23 @@ VerliAdmin v0.3.x help file
 Instalation:
 ========================================================================
 
+Edit your configuration file.. (for the first time you'll need to copy it over)
+copy config.php.example config.php
+then open it with your favourite editor, update the imporatnt values and save it..
+
+
 Insert setuplist.sql and setuphelp.sql into your verlihub database.
 You can do it trought some MySQL administration tool like phpMyAdmin
 or directly in MySQL.
-mysql -u user -p -A Db < setuplist.sql
-mysql -u user -p -A Db < setuphelp.sql
+
+ mysql -u user -p -A Db < setuplist.sql
+ mysql -u user -p -A Db < setuphelp.sql
+
+eventually if you have access to verlihub's scripts if vh_getdb command gets you into the mysql,
+quit mysql and back in shell run
+
+ mysql -u `vh_getdb --getuser` -p`vh_getdb --getpass` -A `vh_getdb --getdata` < setuplist.sql
+ mysql -u `vh_getdb --getuser` -p`vh_getdb --getpass` -A `vh_getdb --getdata` < setuphelp.sql
 
 
 Table maitanance:

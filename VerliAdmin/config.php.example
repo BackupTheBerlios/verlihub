@@ -25,10 +25,10 @@
 ; browser like text).
 
 [HUB]
-host = "xyzuvw.abcd.ef" 			;MySQL host (usualy localhost)
-user = "abab"				;MySQL username
-password = "*********"				;MySQL password
-database = "aaaaaa"		;MySQL database name
+host = "localhost" 			;MySQL host (usualy localhost)
+user = "root"				;MySQL username
+password = ""				;MySQL password
+database = "verlihub"		;MySQL database name
 
 ; !!! Next rows will be supported since version 0.4 !!!
 
