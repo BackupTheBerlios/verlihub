@@ -26,10 +26,25 @@ $script_start = MicroTime();	//Get microtime on start of script
 OB_Start();	//Start output buffering
 
 $mysql = Parse_Ini_File("config.php", TRUE);
-Include "library.php";
-Include "defaultconf.php";
 
-$DB_hub = NEW VA_MySQL($mysql['HUB']['host'], $mysql['HUB']['user'], $mysql['HUB']['password'], $mysql['HUB']['database']);
+$browser = substr($_SERVER['HTTP_USER_AGENT'], 0, 7);
+
+IF(isset($_POST['selecthub']) && $mysql['HUB']['multi']==1)
+{
+        setcookie("database",$_POST['HubDB']);
+        $database=$_POST['HubDB'];
+}
+ELSEIF(!$database && $mysql['HUB']['multi']==1) Print "<SCRIPT language=\"javascript\"><!--
+
+location.replace(\"selectdb.php\");
+
+--></SCRIPT>";
+
+Include "library.php";
+
+IF($mysql['HUB']['multi']==1) $DB_hub = NEW VA_MySQL($mysql['HUB']['host'], $mysql['HUB']['user'], $mysql['HUB']['password'], $database);
+ELSE $DB_hub = NEW VA_MySQL($mysql['HUB']['host'], $mysql['HUB']['user'], $mysql['HUB']['password'], $mysql['HUB']['database']);
+$VA_setup[] = "";
 $VA_setup = Array_Merge($VA_setup, GetConfig($DB_hub, 'VerliAdmin'));
 $VH_setup = GetConfig($DB_hub, 'config');
 
@@ -116,7 +131,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 <SCRIPT language="JavaScript" type="text/JavaScript" src="js/rollover.js"></SCRIPT>
 <SCRIPT language="JavaScript" type="text/JavaScript" src="js/confirm.js"></SCRIPT>
-
 <BODY class="fs10px">
 <CENTER>
 
@@ -145,6 +159,7 @@ ELSEIF(!USR_CLASS && $_GET['q'] != "about" && $_GET['q'] != "stats" && $_GET['q'
 
 //Otherwise include required page
 ELSEIF($_GET['q'] != "" && $_GET['q'] != "none") {
+	if(substr_count($_GET['q'], "/"))  die("Hacking attempt. You bastard."); 
 	IF(!Include $_GET['q'].".php") {
 		//If include fails (page is not found or sytax error in script
 		//display error message)
