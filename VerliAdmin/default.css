@@ -1,0 +1,285 @@
+/*
+Copyright (c) 2004 by Petr Bohac
+--------------------------------
+This file is part of VerliAdmin by bohyn, www interface for VerliHub.
+http://bohyn.czechweb.cz
+
+VerliAdmin is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+VerliAdmin is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with VerliAdmin; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+BODY
+	{
+	background-color: #9FB0C0;
+	scrollbar-arrow-color: #000000;
+	scrollbar-track-color: #9FB0C0;
+	scrollbar-face-color: #9FB0C0;
+	scrollbar-shadow-color: #000000;
+	scrollbar-highlight-color: gray;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	margin : 0px;
+	padding: 5px;
+}
+
+HR {
+	border-width: 0px;
+	background-color: black;
+	height: 1px;
+	width: 90%;
+	}
+
+IMG
+	{border-width: 0px;}
+
+A
+	{
+	color: blue;
+	text-decoration: none;
+	}
+A:HOVER
+	{
+	color: red;
+	text-decoration: underline;
+	}
+
+INPUT, TEXTAREA, SELECT, IFRAME
+	{
+	font-size: 10px;
+	background-color: #CFDFDF;
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	scrollbar-arrow-color: #000000;
+	scrollbar-track-color: #CFDFDF;
+	scrollbar-face-color: #CFDFDF;
+	scrollbar-shadow-color : #000000;
+	scrollbar-highlight-color: gray;
+	}
+
+.b0
+	{border-width: 0px;}
+.b1
+	{
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	}
+.b1top
+	{
+	border-top-width: 1px;
+	border-top-color: black;
+	border-top-style: solid;
+	}
+
+.b
+	{font-weight: bold;}
+.i
+	{font-style: italic;}
+
+TABLE.header A	{
+	background-color: #CFDFDF;
+	background-position: 2px;
+	background-repeat: no-repeat;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	height: 16px;
+	margin: 0px;
+	padding-left: 20px;
+	padding-right: 5px;
+	padding-top: 2px;
+	vertical-align: top;
+}
+TABLE.header A:HOVER
+	{background-color: #9FB0C0;}
+TABLE.header A.reglist
+	{background-image: url(img/reglist.gif);}
+TABLE.header A.kicklist
+	{background-image: url(img/kicklist_off.gif);}
+TABLE.header A.kicklist:HOVER
+	{background-image: url(img/kicklist_on.gif);}
+TABLE.header A.banlist
+	{background-image: url(img/banlist_off.gif);}
+TABLE.header A.banlist:HOVER
+	{background-image: url(img/banlist_on.gif);}
+TABLE.header A.unbanlist
+	{background-image: url(img/unbanlist_off.gif);}
+TABLE.header A.unbanlist:HOVER
+	{background-image: url(img/unbanlist_on.gif);}
+TABLE.header A.setuplist
+	{background-image: url(img/setuplist_off.gif);}
+TABLE.header A.setuplist:HOVER
+	{background-image: url(img/setuplist_on.gif);}
+TABLE.header A.trigger
+	{background-image: url(img/file_trigger.gif);}
+TABLE.header A.commands
+	{background-image: url(img/commands.gif);}
+TABLE.header A.pi_plug
+	{background-image: url(img/plugin.gif);}
+TABLE.header A.home
+	{background-image: url(img/home.gif);}
+TABLE.header A.unban
+	{background-image: url(img/unban.png);}
+TABLE.header A.messanger
+	{background-image: url(img/messanger_off.gif);}
+TABLE.header A.messanger:HOVER
+	{background-image: url(img/messanger_on.gif);}
+TABLE.header A.stats
+	{background-image: url(img/stats_off.gif);}
+TABLE.header A.stats:HOVER
+	{background-image: url(img/stats_on.gif);}
+TABLE.header A.chpass
+	{background-image: url(img/repass.gif);}
+TABLE.header A.logout
+	{background-image: url(img/logout.gif);}
+TABLE.header A.about
+	{background-image: url(img/about.gif);}
+TABLE.header A.bantest
+	{background-image: url(img/bantest.gif);}	
+
+.leftpanel {
+	font-size: 9px;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	background-color: #CFDFDF;
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	float : left;
+}
+.rightpanel {
+	font-size: 0px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: #CFDFDF;
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	float : right;
+}
+.encoding {
+	font-size: 9px;
+	position: absolute;
+	top: 27px;
+	right: 5px;
+	width: 150px;
+	background-color: #CFDFDF;
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	float : right;
+}
+
+.h1 {
+	background-color: transparent;
+	color: #CFDFDF;
+	font-weight: 900;
+	font-size: 50px;
+	font-family: "Times New Roman", Times, serif;
+}
+.h2 {
+	background-color : transparent;
+	color : #CFDFDF;
+	font-weight : bold;
+	font-size : 20px;
+}
+.h3 {
+	background-color : transparent;
+	color : #CFDFDF;
+	font-weight : bold;
+	font-size : 15px;
+}
+
+.bg_light
+	{background-color: #CFDFDF;}
+.bg_dark
+	{background-color: #9FB0C0;}
+
+.black
+	{color: black;}
+.green
+	{color: Green;}
+.light_blue
+	{color: #0080ff;}
+.red
+	{color: red;}
+
+.fs0px
+	{font-size: 0px;}
+.fs8px
+	{font-size: 8px;}
+.fs9px
+	{font-size: 9px;}
+.fs10px
+	{font-size: 10px;}
+.fs11px
+	{font-size: 11px;}
+.fs12px
+	{font-size: 12px;}
+
+
+.left
+	{text-align: left;}
+.center
+	{text-align: center;}
+.right
+	{text-align: right;}
+.top
+	{vertical-align: top;}
+.middle
+	{vertical-align: middle;}
+.bottom
+	{vertical-align: bottom;}
+
+.h100pr
+	{height: 100%;}
+.w100pr
+	{width: 100%;}
+w1px
+	{width: 1px;}
+.w75px
+	{width: 75px;}
+.w100px
+	{width: 100px;}
+.w160px
+	{width: 160px;}
+.w200px
+	{width: 200px;}
+.w250px
+	{width: 250px;}
+.w300px
+	{width: 300px;}
+
+.footer {
+	background-color: #CFDFDF;
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	font-size: 10px;
+	width: 100%;
+}
+
+.command_line {
+	background-color: #CFDFDF;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	border-top-width: 1px;
+	border-top-color: black;
+	border-top-style: solid;
+	font-size: 9px;
+	width: 100%;
+	}

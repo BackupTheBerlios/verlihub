@@ -1,0 +1,106 @@
+This guide is for installing verliadmin on slackware.
+It might work with other distrobutions as well but path and dir and commands 
+may differ.
+
+You need to have apache or apache2 with php installed. (if you made 
+fullinstall of slackware the you already got them).
+
+Download VerliAdmin
+unzip VerliAdmin    with unzip VerliAdmin_0.3_RC3.zip    remember to change 
+to version if you use another version.
+cd VerliAdmin
+
+Now edit config.php thats located in Verliadmin folder.
+In config.php change the mysqlsettings.
+You will find something like this.
+
+//      MySQL server configuration:
+$mysql_host = "localhost";                      //MySQL host (usualy 
+localhost)
+$mysql_user = "verlihub";                              //MySQL username
+$mysql_password = "verlihub";                            //MySQL password
+$mysql_database = "verlihub";          //MySQL database name
+
+In this section you insert your dbconfig settings. (you can se them in your 
+config directory for me it's cat /root/.verlihub/dbconfig).
+
+Now copy VerliAdmin folder to /var/www/htdocs
+
+Type vh_getdb (logs you into mysql useing verlihubs default db, but it only 
+works on newer verlihubs)
+Type \. /var/www/htdocs/VerliAdmin/setuplist.sql
+That imports VerliAdmins settings to db.
+
+Type \. /var/www/htdocs/VerliAdmin/setuphelp.sql
+This didn't work for me i got only an error messige saying that setuphelp 
+table didn't exist.
+If you get an error message then copy and paste this into mysql.
+
+CREATE TABLE IF NOT EXISTS `setuphelp` (
+`var` VARCHAR( 32 ) NOT NULL ,
+`vtype` ENUM( 'string', 'int', 'float', 'boolean', 'class', 'text' ) NOT 
+NULL ,
+`help` TEXT,
+`applies` ENUM( 'not', 'new', 'now' ) NOT NULL ,
+PRIMARY KEY ( `var` ) );
+
+Then press enter.
+Now try \. /var/www/htdocs/VerliAdmin/setuphelp.sql
+Now it should work
+why it didn't work for me must be an small bugg, but it might have been 
+fixed when you try this.
+
+Now we need to see that it imported it ok.
+Type  show tables;
+
++---------------------+
+| Tables_in_verlihub  |
++---------------------+
+| SetupList           |
+| banlist             |
+| file_trigger        |
+| kicklist            |
+| reglist             |
+| setuphelp           |
+| temp_rights         |
+| unbanlist           |
++---------------------+
+
+If you see setuphelp here it should be imported ok.
+
+Now let's look at SetupList
+Type  select * from SetupList where file= "VerliAdmin";
+If you see alot of things now it imported setuplist.sql ok.
+
+type \q
+You have now saved and quit mysql.
+
+Now edit your apace config pico /etc/apache/httpd.conf or pico 
+/etc/apache2/httpd.conf
+(the reason why i type two lines here is because there is two apache servers 
+apache and apache2)
+
+Make shore that this line at the end of the configfile is  uncomented(no # 
+or ; before the line),
+Include /etc/apache/mod_php.conf or Include /etc/apache2/mod_php.conf
+
+scroll up in the file and find a line like this DirectoryIndex index.html 
+then edit the line to this
+DirectoryIndex index.php index.html
+
+Quit and save the config.
+
+Then edit php.ini
+Go to the section Dynamic Extensions in php.ini
+There we look for a line like this
+extension=mysql.so  and make shore it's  uncomented(no # or ; before the 
+line)
+in PHP4 i think it's uncommented by default but not in PHP5
+Now start apache with command  httpd
+If it's already running restart it  with apachectl graceful
+Now log in to your verliadmin thrue an webbrowser.
+Http://myadress.com/VerliAdmin/    Http://your_ip_or_adress/VerliAdmin/
+
+I hope you enjoy VerliAdmin.
+Originally written by Nille.
+

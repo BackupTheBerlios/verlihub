@@ -1,0 +1,372 @@
+<?
+/*
+Copyright (c) 2004 by Petr Bohac
+---------------------------
+This file is part of VerliAdmin.
+
+VerliAdmin is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+VerliAdmin is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with VerliAdmin; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+//---------------------------------------------------------------------
+//Language name:
+$lang_name = "Svenska";
+//Language by:
+$lang_author = "Nille";
+//Language by:
+$lang_http = "";
+//E-mail:
+$lang_email = "";
+//version:
+$lang_version = "0.3.3";
+//Choose encoding:
+$encoding = "ISO-8859-1";
+
+$text_about =					"Om";							//0.0.5
+$text_active_kicks =			"Endast Aktiva";						//0.1
+$text_action =					"Action";						//0.3.2
+$text_action_0 =	"Anslut";									//0.3.2
+$text_action_1 =	"Användaren godkänd";								//0.3.2
+$text_action_2 =	"Användar utloggning";								//0.3.2
+$text_action_3 =	"Anslutningen avslutades";							//0.3.2
+$text_add_new_setup =			"Lägg till ny inställning";					//0.3 RC1
+$text_add_new_trigger =			"Lägg till ny fil trigg";					//0.3 RC1
+$text_addreg =					"Registrera ny Användare";				//0.0.2
+$text_admin =					"Administratör";					//0.3 RC1
+$text_affected_rows =			"Berörda rader";						//0.3
+$text_all =						"Alla";						//0.2.1
+$text_answer =					"Svara";						//0.3.1
+$text_applies =					"Verställande";						//0.0.1
+$text_april =					"April";						//0.3 RC1
+$text_author =					"Upphovsman";						//0.0.6
+$text_august =					"Augusti";						//0.3 RC1
+$text_averange =				"Genomsnitt";						//0.3 RC1
+$text_ban_reason =				"Orsak till avstängning (ban)";				//0.0.4
+$text_ban_cmds =				"Avstängnins kommandon";				//0.3 RC1
+$text_banlist =			 		"Avstängda användare";					//0.0.2
+$text_ban_op =	 				"Avstängd (Bannad) av";					//0.0.5
+$text_ban_test =				"Klaga/kontrollera Avstängning";			//0.3.1
+$text_ban_type = 				"Avstängnings typ";					//0.0.1
+$text_banfree =					"Du har inga avstängningar";				//0.3.3
+$text_bans =					"Avstängningar";					//0.3.1
+$text_begins =					"Börjar";						//0.3 RC1
+$text_body =					"Kropp";						//0.3 RC1    ????????????
+$text_bug_report = 				"Bugg rapport";						//0.2.3
+$text_by =						"av";						//0.3
+$text_changelog =		 		"Ändringslogg";						//0.1 RC2
+$text_change_password =	 		"Byta lösenord";						//0.3 RC1
+$text_chief_op =				"Chefs OP";						//0.3 RC1
+$text_class =			 		"Klass";						//0.0.1
+$text_class_protect =			"Klass skydd";							//0.0.1
+$text_class_hidekick =			"Klass för dold sparkning (kick)";				//0.0.1
+$text_colum =					"Kolumn";						//0.3 RC1
+$text_cmd_ban_help =			"Permanent avstängning (ban) av IP med orsak?";			//0.3 RC1
+$text_cmd_banemail_help =		"Lägg till e-post permanent till avstängningslistan";		//0.3 RC1
+$text_cmd_banhost_help =		"Lägg till värddator (host) permanent till avstängningslistan";	//0.3 RC1
+$text_cmd_banip_help =			"Stängav (ban) IP permanent,men inte namn, även om kick inte finns i databasen";//0.3 RC1
+$text_cmd_bannick_help =		"Stänger av (ban) namn";					//0.3 RC1
+$text_cmd_banshare_help =		"Lägg till exakt utdelning storlek (share size) permanent till avstängningslistan";//0.3 RC1
+$text_cmd_bantemp_help =		"Temporär avstängning (ban) av IP (och antagligen även namn)";	//0.3 RC1
+$text_cmd_drop_help =			"Koppla ifrån användare från hubben, temporär spark avstängning (kicktempban) tillämpas här";//0.3 RC1
+$text_cmd_gc_help =				"Hämtar Konfiguration";					//0.3 RC1
+$text_cmd_getinfo_help =		"Hämta ip och värddator (host) av angivet namn";		//0.3 RC1
+$text_cmd_getip_help =			"Hämta ip av angivet namn";					//0.3 RC1
+$text_cmd_gethost_help =		"Hämta värddator (host) av angivet namn";			//0.3 RC1
+$text_cmd_infoban_help =		"Hämta information om avstängningar";				//0.3 RC1
+$text_cmd_kick_help =			"Sparka användaren från komandorad. Du kan använda _ban_ eller _ban_#x (# = nummer, x = tid (m = minuter, h = timmar, d = dagar, w = veckor, M = månader, y = år)) som en del av orsaken till spakrning/avstängning av en användare";//0.3 RC1
+$text_cmd_logout_help =			"Logga ut från VerliAdmin";					//0.3.3
+$text_cmd_noctm_help =			"Förbjud användaren att ladda ner från hubben";			//0.3 RC1
+$text_cmd_nopm_help =			"Förbjud användaren att skicka PM (privata medelanden";		//0.3 RC1
+$text_cmd_nosearch_help =		"Förbjud användaren att söka i hubben";				//0.3 RC1
+$text_cmd_passwd_help =			"Sätt nytt lösenord (se även !regpasswd)";			//0.3 RC1
+$text_cmd_rclass_help =			"Byt klass på registrerad användare";				//0.3 RC1
+$text_cmd_rdel_help =			"Tabort användare fullständigt från databasen";			//0.3 RC1
+$text_cmd_rdisable_help =		"Otillåt en registrerad användare (visar som om användaren inte finns i databasen)";//0.3 RC1
+$text_cmd_rinfo_help =			"Visa information om registrerdd användare";			//0.3 RC1
+$text_cmd_renable_help =		"Tillåt en registrerad användare";				//0.3 RC1
+$text_cmd_rinfo_help =			"Visa information om registrerad användare";			//0.3 RC
+$text_cmd_rnew_help =			"Registrera en ny användare med angiven klass (om ingen klass anges blir det klass = 1 automatiskt)";//0.3 RC1
+$text_cmd_rpasswd_help =		"Tillåt användaren att byta sitt lösenord.   Kan även kombineras med <namn> <lösenord> för att ge registrerade användare ett lösenord.   exempel !rpass Nille 123456";//0.3 RC1
+$text_cmd_rpasswd_err =			"Användare \"%s\" kunde inte hittas i databasen eller så är du inte tillräcklig behörighet"; //0.3.3
+$text_cmd_rprotect_help =		"Registrerade användare upp till denna klass kan inte göra nått mot denna användaren";//0.3 RC1
+$text_cmd_rhidekick_help =		"Detta kommando är användbart för botar då detta kommando döljer alla sparkningar";//0.3 RC1
+$text_cmd_rset_help =			"Ställer in alla variablar (värden). Tillgängliga variablar är: nick, class, class_protect, class_hidekick, hide_kick, reg_date, reg_op, pwd_change, pwd_crypt, login_pwd, login_last, logout_last, login_cnt, login_ip, error_last, error_cnt, error_ip, enabled, email, note_op, note_usr";//0.3 RC1
+$text_cmd_set_help =			"Ställer in värden (fil = config)";				//0.3 RC1
+$text_cmd_vaset_help =			"Ställer in värden (fil = VerliAdmin)";				//0.3 RC1
+$text_cmd_wip_help =			"Visar vem som har föjande IP";					//0.3 RC1
+$text_cmd_wrange_help =			"Visar vem/vilka som har föjande IP serie (range)";		//0.3 RC1
+$text_cmd_flood_help =			"Flöda en användare med PM meddelanden (detta är inte snällt :o) )";//0.3 RC1
+$text_cmd_gag_help =			"Förbjud användaren att skriva i huvudchatten (mainchat)";	//0.3 RC1
+$text_cmd_unban_help =			"Tar bort avstängning (ban) från databasen (både namn och IP)";	//0.3 RC1
+$text_cmd_unbanip_help =		"Tar bort avstängning (ban) av IP men lämnar kvar namn avstängningen i databasen";//0.3 RC1
+$text_cmd_unbanhost_help =		"Tar bort värddatorns (host) avstängning från databasen";	//0.3 RC1
+$text_cmd_unbannick_help =		"Tar bort avstängning (ban) av namn men lämnar kvar IP avstängningen i databasen";//0.3 RC1
+//$text_cmd_va_only =				"Endast VerliAdmin";					//0.3.3
+$text_command_line =			"Kommando rad";							//0.3.3
+$text_command =			 		"Kommando";						//0.3 RC1
+$text_commands =				"Kommandon";						//0.3 RC1
+$text_comment =					"Kommentar";						//0.3.1
+$text_contains =				"Innehåller"						//0.3 RC1
+$text_credits =			 		"Credits :)";						//0.0.6
+$text_crypted =					"Krypterad";						//0.2.5
+$text_database =				"Databas";						//0.3
+$text_date_expires =			"Gilltig till";							//0.3 RC1
+$text_date =					"Datum";						//0.3.1
+$text_date_limit =				"Till";							//0.0.1
+$text_date_sent =				"Sändnings datum";					//0.3 RC1
+$text_date_start =				"Sedan";						//0.0.1
+$text_date_unban =				"Tillåten sedan (Unbanned)";				//0.0.4
+$text_day =						"dag";						//0.3 RC1
+$text_days =					"dagar";						//0.3
+$text_december =				"December";						//0.3 RC1
+$text_def =						"Sökväg";					//0.3 RC1
+$text_defval =					"Defval";						//0.0.1
+$text_del_inactive_users =		"Tabort användare som aldrig loggar in";			//0.3
+$text_del_no_pwd_users =		"Tabort registrarade användare som inte valt lösenord";		//0.3
+$text_del_old_bans =			"Tabort avstängningar som går ut innan";			//0.3
+$text_del_old_kicks =			"Tabort inmatningar som är äldre än";				//0.3
+$text_delete =					"Tabort";						//0.3
+$text_delete_user =				"Avregistrera användare";				//0.0.1
+$text_delreg_confirm =			"Vill du verkligen avregistrera denna användaren";		//0.2.3
+$text_descr =					"Beskrivning";						//0.3 RC1
+$text_disable =					"Otillåta";						//0.2.2
+$text_disabled =				"Otillåten";						//0.3 RC1
+$text_disable_user =			"Otillåta konto";						//0.0.1
+$text_disreg_confirm =			"Vill du verkligen Otillåta denna användaren";			//0.2.3
+$text_documentation =			"Dokumentation";						//0.1 RC2
+$text_download_new =			"På denna länk finner du senaste versionen av  VerliAdmin";	//0.0.6
+$text_edit_setup =				"Ändra  konfigurationen";				//0.0.5
+$text_edit_trigger =			"Ändra fil triggar";						//0.3 RC1
+$text_edit_user =				"Ändra användare";					//0.0.1
+$text_email	=					"E-post";					//0.0.1
+$text_enabled =					"Tillåt";						//0.0.1
+$text_encoding =				"Kodning";						//0.3.1
+$text_ends =					"Slutar";						//0.3 RC1
+$text_equal =					"Lika med";						//0.3 RC1
+$text_error_cnt =				"Fel";							//0.0.1
+$text_error_ip =				"Felaktigt IP";						//0.3 RC1
+$text_error_last =				"Sissta fel";						//0.0.1
+$text_estimated =				"Förväntad";						//0.3 RC1
+$text_february =				"Februari";						//0.3 RC1
+$text_for =						"För";						//0.3
+$text_for_class =				"För klass";						//0.2.1
+$text_forum =					"Forum";						//0.1 RC2
+$text_file =					"Fil";							//0.0.5
+$text_file_trigger =			"Fil triggar";							//0.3 RC1
+$text_filter =					"Sortera";						//0.0.6
+$text_flag =					"Flagga";						//0.3
+$text_flags =					"Flaggor";						//0.3 RC1
+$text_gag_cmds =				"Gag kommando";						//0.3 RC1
+$text_greater =					"Större än";						//0.3.2
+$text_guest =					"Gäst";							//0.3 RC1
+$text_hide_keys =				"Dölj admin(nycklar)";					//0.3.1
+$text_hide_kick =				"Dölj spark";						//0.0.1
+$text_help =					"Hjälp";						//0.0.1
+$text_host =					"Värddator";						//0.0.1
+$text_home =					"Hem";							//0.3
+$text_homepage =				"VA hemsida";						//0.0.6
+$text_hours =					"Timmar";						//0.3
+$text_id =						"ID";						//0.3.2
+$text_info =					"Information";						//0.3.2
+$text_info_0 =	"???";											//0.3.2
+$text_info_1 =	"Avstängt eller felaktigt namn";							//0.3.2
+$text_info_2 =	"Användaren använde annat namn i chatten";						//0.3.2
+$text_info_3 =	"Operatör sparkade användaren";								//0.3.2
+$text_info_4 =	"\$OpForceMove";									//0.3.2  ???????????
+$text_info_5 =	"Användaren loggade ut själv";								//0.3.2
+$text_info_6 =	"Kritisk hubb belastning";								//0.3.2
+$text_info_7 =	"Timeout";										//0.3.2  ???????????
+$text_info_8 =	"Inaktivitet";										//0.3.2
+$text_info_9 =	"Hubben är full";									//0.3.2
+$text_info_10 =	"Utdelnings storlek";									//0.3.2
+$text_info_11 =	"Ingen klient beskrivning(tag)";							//0.3.2
+$text_info_12 =	"Klient beskrivningen (tag) är inte godkänd";						//0.3.2
+$text_info_13 =	"Felaktigt lösenord";									//0.3.2
+$text_info_14 =	"Fel uppstod under inloggnigen";							//0.3.2
+$text_info_15 =	"Syntax fel i medelande";								//0.3.2
+$text_info_cmds =				"Information om kommandon";				//0.3 RC1
+$text_ip =						"IP";						//0.0.1
+$text_ip_ban =					"IP avstängning";					//0.3.1
+$text_is_drop =					"Är droppad";						//0.0.5
+$text_january =					"Januari";						//0.3 RC1
+$text_jully =					"Juli";							//0.3 RC1
+$text_june =					"Juni";							//0.3 RC1
+$text_kicklist =			 	"Sparkade användare";					//0.0.4
+$text_language =				"Språk";						//0.3
+$text_less =					"Mindre än";						//0.3.2
+$text_licence =					"Licens";						//0.3
+$text_login = 					"Inloggning";						//0.0.1
+$text_login_cnt =				"Inloggningar";						//0.0.1
+$text_login_ip =				"Inloggnings IP";					//0.0.1
+$text_login_last =				"Sissta inloggning";					//0.0.1
+$text_login_pwd =				"Inloggnings lösen";					//0.0.1
+$text_logout =					"Utloggning";						//0.0.1
+$text_logout_last =				"Sissta Utloggning";					//0.0.1
+$text_main_chat =				"Huvud chatt";						//0.3 RC1
+$text_march =					"Mars";							//0.3 RC1
+$text_master =					"Master";						//0.3 RC1
+$text_max =						"Maximal";					//0.3 RC1
+$text_may =						"Maj";						//0.3 RC1
+$text_mass_presubfix =			"Mass prefix / subfix";						//0.2.1
+$text_md5_hash =				"MD5 hash";						//0.3.1
+$text_messanger =				"Messanger";						//0.3 RC1
+$text_min =						"Minimal";					//0.3 RC1
+$text_min_class =				"Minsta klass";						//0.3 RC1
+$text_minutes =					"Minuter";						//0.3
+$text_month =					"månad";						//0.3 RC1
+$text_month_stats =				"Måntlig statistik";					//0.3 RC1
+$text_most_active_ip =			"Mest sparkade / avstängda IP";					//0.2.1
+$text_most_active_nick =		"Mest sparkade / avstängda namnen";				//0.2.1
+$text_most_active_op =			"Mest aktiva OP";						//0.2.1
+$text_mysql_status =			"MySQL status";							//0.3
+$text_never =					"Aldrig";						//0.1
+$text_newest_version =			"Nyaste VA";							//0.0.6
+$text_nick =					"Namn";							//0.0.1
+$text_nick_ban =				"Namn avstängning";					//0.3.1
+$text_nick_ip_ban =				"Namn & IP avstängning";				//0.3.1
+$text_nick_reg =				"Namnet är registrerat";				//0.3.1
+$text_no =						"Nej";						//0.2.3
+//$text_no_ban =					"Inga avstängningar hittades, din begäran togs bort";//0.3
+$text_no_results =				"Inga träffar";						//0.3.1
+$text_noncrypted =				"Okrypterad";						//0.3 RC1
+$text_note_op =					"Anteckning OP";					//0.0.1
+$text_note_usr =				"Anteckning användare";					//0.0.1
+$text_november =				"November";						//0.3 RC1
+$text_octomber =				"Oktober";						//0.3 RC1
+$text_ok =						"OK";						//0.3.3
+$text_op =						"OP";						//0.3 RC1
+$text_optimize =				"Optimera";						//0.3
+$text_other_cmds =				"Övriga kommandon";					//0.3 RC1
+$text_others =					"Och till alla andra som hjälpt mej med detta projekt...";//0.0.6
+$text_overhead =				"Genomsnitt";						//0.3      ???????????
+$text_page_time =				"Sidan generades på %s s";				//0.3      %s s ??????
+$text_parametrs =				"Parametrar";						//0.3 RC1
+$text_password =			 	"Lösenord";						//0.0.1
+$text_password_confirm =		"Bekräfta lösenord";						//0.2.5
+$text_pending =					"Avvaktande";						//0.3.1    ???? Oavgjord 
+$text_permanent =				"Permanent";						//0.1
+$text_plain =					"Plain";						//0.3.1
+$text_pm =						"Privat medelande";				//0.3 RC1
+$text_pwd_change =				"Lösenords byte";					//0.0.1
+$text_pwd_change_confirm =		"Vill du verkligen tillåta byte av lösenord av användare \'%s\'";//0.2.5  ????????
+$text_pwd_crypt =				"krypterat lösenord";					//0.0.1
+$text_pwd_set =					"Pwd set";						//0.3     ???????
+$text_queries =					"Förfrågningar";					//0.3
+$text_query =					"Förfrågning";						//0.3.1
+$text_range_fr =				"IP serie från";					//0.0.1
+$text_range_to =				"IP serie till";					//0.0.1
+$text_reason =					"Orsak";						//0.0.1
+$text_received =				"Mottaget";						//0.3
+$text_receiver =				"Motagare";						//0.3 RC1
+$text_refuse =					"Vägra";						//0.3.1
+$text_refused =					"Vägrad";						//0.3.1
+$text_reg =						"Registrera";					//0.3 RC1
+$text_reg_cmds =				"Registrerings kommando";				//0.3 RC1
+$text_reg_date =				"Registrerings datum";					//0.0.1
+$text_reg_op =					"Registrerande OP";					//0.0.1
+$text_register_nick =			"Registrera namn";						//0.3.1
+$text_reglist =					"Användar konton";					//0.0.1
+$text_reply =					"Svara";						//0.3.1
+$text_reset =					"Reset";						//0.0.5
+$text_rows =					"Rader";						//0.3 RC1
+$text_search_stats =			"Söknings statistik";						//0.3 RC2
+$text_seconds =					"Sekunder";						//0.3
+$text_send =					"Sänd";							//0.0.1
+$text_send_as =					"Sänd som";						//0.3 RC1
+$text_send_msg =				"Sänd medelande";					//0.3 RC1
+$text_send_notification =		"Sänd e-post";							//0.2.1
+$text_sender =					"Avsändare";						//0.3 RC1
+$text_sent =					"Sänt";							//0.3
+$text_september =				"September";						//0.3 RC1
+$text_set_prefix =				"Sätt prefix";						//0.2.1
+$text_set_subfix =				"Sätt subfix";						//0.2.1
+$text_setup_cmds =				"Inställnings kommandon";				//0.3 RC1
+$text_setuplist =				"Inställningar";					//0.0.5
+$text_share_size =				"Utdelat";						//0.0.1
+$text_share_stats =				"Utdelnings statistik";					//0.3 RC1
+$text_shortcut =				"Genväg";						//0.3 RC1
+$text_show =					"Visa";							//0.3
+$text_size =					"Storlek";						//0.3
+$text_special_thanx =			"Speciellt tack";						//0.0.6
+$text_stats =					"Statistik";						//0.2.1
+$text_status =					"Status";						//0.3.1
+$text_subject =					"Ämne";							//0.3 RC1
+$text_table =					"Table";						//0.3 RC1
+$text_tb_optimize =				"Vill du verkligen optimera tabell %s";			//0.3          %s??????
+$text_tb_truncate =				"Vill du verkligen tabort alla rader i tabellen %s";	//0.3          %s??????
+$text_this_version =			"Din VA";							//0.0.6
+$text_time =					"Tid";							//0.0.5
+$text_total =					"Totalt";						//0.3 RC1
+$text_truncate =				"Tömma";						//0.3   stympa skära av/bort ??
+$text_translations =			"Översättningar";						//0.3 RC1
+$text_trigger_flag_1 =			"Kör ett kommando";						//0.3.3
+$text_trigger_flag_2 =			"Skicka som PM";						//0.3.3
+$text_trigger_flag_4 =			"Trigning som motd";						//0.3.3
+$text_trigger_flag_8 =			"Triggar med +help/!help Kommando";				//0.3.3
+$text_trigger_flag_16 =			"Definitionen är texten själv";					//0.3.3
+$text_trigger_flag_32 =			"Tillåt utbytes variablar";					//0.3.3
+//text_trigger_flag_62			"Keeps PM OPchatt until u turn it of"
+$text_unban =					"Ta bort avstängning";					//0.0.5
+$text_unban_cmds =				"Ta bort avstängnings kommandon";			//0.3 RC1
+$text_unban_inserted =			"Din begäran för att ta bort din avstängning har skickats. Vänta på beslut från en operatör.";//0.3
+$text_unban_op =				"OP som tog bort avstängningen";			//0.0.4
+$text_unban_reason =			"Orsak till att Ta bort avstängning";				//0.0.4
+$text_unbanlist =				"Borttagna avstängningar";				//0.0.4
+$text_unbanned =				"Avstängningen är bortagen";				//0.3.1
+$text_unbans =					"Unbans";						//0.3.1
+$text_upload =					"Uppladdning";						//0.3 RC1
+$text_upload_stats =			"Uppladdnings statistik";					//0.3 RC1
+$text_uptime =					"Upp tid";						//0.3
+$text_user = 					"Användare";						//0.0.1
+$text_user_stats =				"Användar statistik";					//0.3 RC1
+$text_userlog =					"Användar logg";					//0.3.2
+$text_va_message =				"VerliAdmin meddelande";				//0.3
+$text_val =						"Värde";						//0.0.5
+$text_var =						"Variabel";						//0.0.1
+$text_version =					"Version";						//0.3.1
+$text_vip =						"VIP";						//0.3 RC1
+$text_view_mode =				"Visnings läge";					//0.2.1
+$text_vtype =					"Visnings typ";						//0.0.1
+$text_week_stats =				"Vecko statistik";					//0.3 RC1
+$text_yes =						"Ja";						//0.2.3
+
+$err_msg['bad_nick'] = 				"Felaktigt användarnamn";				//0.0.2                    ?
+$err_msg['bad_pwd'] = 				"Felaktigt lösenord";					//0.0.2                    ?
+$err_msg['disabled_account'] =		"Ditt konto är avaktiverat";					//0.0.2                    ?
+$err_msg['enter_body'] =			"Skriv medelande fot";					//0.3 RC1                  ?
+$err_msg['enter_nick'] =			"Skriv ditt namn";					//0.3 RC1                  ?
+$err_msg['enter_recsiver'] =		"Skriv motagarnamn";						//0.3 RC1                  ?
+$err_msg['enter_subject'] =			"Skriv ämne";						//0.3 RC1                  ?
+$err_msg['guest_sending_as_reg'] =	"Du kan inte sända medelande som registrerad användare utan att vara inloggad";//0.3 RC1   ?
+$err_msg['invalid_nick'] =			"Ogiltigt namn";					//0.0.2                    ?
+$err_msg['no_access'] =				"Du har inte tillgång till denna sektionen";		//0.3 RC2                  ?
+$err_msg['no_addreg_access'] =		"Du har inte rättigheter att lägga till / ändra denna användaren";
+$err_msg_no_answer =				"Skriv ett svar";					//0.3.1
+$err_msg['no_delete_rights'] =		"Du har inte rättigheter tabort denna användare";
+$err_msg['no_disable_rights'] =		"Du har inte rättigheter att Otillåta denna användare";
+$err_msg['no_edit_rights'] =		"Du har inte rättigheter att ändra dessa värden";
+$err_msg['no_edit_setup_access'] =	"Du har inte rättigheter att ändra inställningar";
+$err_msg['no_repass_priv'] = 		"Du har inte ändra denna användares lösenord";
+$err_msg['no_user_found'] =			"Användaren hittades inte";				//0.0.2
+$err_msg['no_unban_access'] =		"Du har inte rättigheter att tabort en avstängning";
+$err_msg['no_unban_reason'] =		"Orsak till bortagning av avstängning saknas";			//0.2.1
+$err_msg['not_such_page'] =			"Sidan hittades inte";					//0.2.3
+$err_msg['pwd_ch_not_allowed'] =	"Du har inte tillåtelsa att ändra ditt lösenord. Fråga någon med högre klass än vad du själv har.";//0.2.5
+$err_msg['pwd_match'] =				"Lösenorden överenstämmer inte";			//0.2.5
+$err_msg['too_low_class'] =			"Din klass är för låg för att använda VerliAdmin";
+$err_msg['too_much_users_found'] =	"För många användare funna med samma namn";			//0.0.2
+$err_msg_unknown_command =			"Okänt kommando '%s' ('%s')\nSkriv '!help' för att se tillåtna kommandon";//0.3.3
+$err_msg['user_exist'] =			"Användaren finns redan";				//0.0.2
+$err_msg['wrong_vtype'] =			"Angivet värde överenstämmer inte med behövd variabel typ";//0.2.2
+?>

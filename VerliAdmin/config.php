@@ -1,0 +1,45 @@
+; <?Die("Hands off");?>
+; Copyright (c) 2004 by Petr Bohac
+; --------------------------------
+; This file is part of VerliAdmin by bohyn, www interface for VerliHub.
+; http://bohyn.czechweb.cz
+
+; VerliAdmin is free software; you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation; either version 2 of the License, or
+; (at your option) any later version.
+
+; VerliAdmin is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+
+; You should have received a copy of the GNU General Public License
+; along with VerliAdmin; if not, write to the Free Software
+; Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+; =========================================================================
+
+; This file is not real PHP file. INI syntax is used there. It has just
+; .php extenson because of security (common ini file can be viewed in
+; browser like text).
+
+[HUB]
+host = "xyzuvw.abcd.ef" 			;MySQL host (usualy localhost)
+user = "abab"				;MySQL username
+password = "*********"				;MySQL password
+database = "aaaaaa"		;MySQL database name
+
+; !!! Next rows will be supported since version 0.4 !!!
+
+; You can enter any number of hubs, but don`t forgot to change hub name
+; (in [] square brackets)
+
+; If you want separated VerliAdmin database for setting (recomanded in
+; multi hub support) uncomment this and fill necesary values
+
+;[VerliAdmin]
+;host = "localhost"
+;user = "root"
+;password = ""
+;database = "verliadmin"
