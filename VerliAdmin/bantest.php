@@ -34,15 +34,20 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 <?
-IF($_GET['nick'] && ValidateIP($_GET['ip'])) {
-	IF(NickExist($_GET['nick'], $DB_hub))
-		$result = $DB_hub->Query("SELECT ip FROM banlist WHERE ip LIKE '".$_GET['ip']."'");
-	ELSE
-		$result = $DB_hub->Query("SELECT nick FROM banlist WHERE ip LIKE '".$_GET['ip']."' OR nick LIKE '".$_GET['nick']."'");
+IF($_GET['nick'] || ValidateIP($_GET['ip'])) {
+	IF($_GET['nick'])
+	{
+	        $result = $DB_hub->Query("SELECT nick, ip FROM banlist WHERE nick LIKE '".$_GET['nick']."'");
+	        IF(ValidateIP($_GET['ip'])) $result .= " AND ip LIKE '".$_GET['ip']."'";
+	}
+        ELSE
+        {
+                $result = $DB_hub->Query("SELECT nick, ip FROM banlist WHERE ip LIKE '".$_GET['ip']."'");
+        }
 
 	IF($result->num_rows) {
-		StoreQueries($DB_hub);
-		Header("Location: index.php?".Change_URL_Query("q", "unban_request"));
+	        $ban = $result->Fetch_assoc();
+		Header("Location: index.php?".Change_URL_Query("q", "unban_request", "nick", urlencode($ban['nick']), "ip", $ban['ip']));
 		Die();
 		}
 	ELSE

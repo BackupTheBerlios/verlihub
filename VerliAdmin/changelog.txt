@@ -17,3 +17,20 @@
 -Merged MultiVerliAdmin and VerliAdmin (You can change to MultiVerliAdmin by setting 'multi' in config.php to 1)
 -Upgraded setuphelp.sql and setuplist.sql
 
+//0.3.7
+-Added Chatroom
+-Added Forbidden words
+-Changed the header
+-Changed about.php
+-Changed unban_admin a bit
+-Fixed some critical issues with MultiVerliAdmin
+-Fixed messanger, it showed +1 message
+-Fixed some mistakes with Mozilla
+-Fixed FUNCTION GetValues
+-Fixed Editing triggers
+-Fixed userlog icon
+-Fixed ip address colum in userlog
+-Removed the last line from library.php (it cause a lot of problems)
+
+
+
