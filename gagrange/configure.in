@@ -1,0 +1,29 @@
+AC_INIT(configure.in)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(gagrange,1.0 )
+
+datadir=$datadir/verlihub
+
+AC_LANG_CPLUSPLUS
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+AC_CHECK_HEADERS([stdlib.h string.h sys/socket.h sys/time.h unistd.h ostream string errno.h sys/poll.h])
+
+AM_MAINTAINER_MODE
+
+AC_PATH_LIB_LIBCONFIG
+AC_PATH_LIB(verlihub, [0 -nocheck], [], verlihub_config, [], [
+                        CXXFLAGS="$CXXFLAGS $VERLIHUB_CFLAGS"
+                        echo "adding $VERLIHUB_CFLAGS to CXXFLAGS"
+                    ], [
+                        echo "Install verlihub devel, or you need a path for the "
+                        echo "verlihub_config script, you may also wat to try some --with-verlihub=/prefix agruments"
+                        exit -1
+                    ])
+
+prefix=`verlihub_config --prefix`
+datadir=`verlihub_config --datadir`
+libdir=$datadir/plugins
+
+AC_OUTPUT(Makefile src/Makefile)
