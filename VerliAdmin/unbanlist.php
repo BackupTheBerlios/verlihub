@@ -176,7 +176,7 @@ IF($total > 0) {
 		$info .= $text_unban_reason." :<BR>".EregI_Replace("(\r)?\n", "<BR>", $row['unban_reason']);
 ?>
 		<TR onmouseover="JavaScript: return escape('<?Print AddSlashes($info);?>');">
-			<TD class="bg_light"><IMG src="img/info.gif" title="<?Print $info;?>" widht=16 height=16></TD>
+			<TD class="bg_light"><IMG src="img/info.gif" title="<?Print urlencode($info);?>" widht=16 height=16></TD>
 			<?IF($VA_setup['unbanlist_ban_type']){?><TD align="right" class="bg_light"><?	Print $row['ban_type'];?></TD><?}?>
 			<?IF($VA_setup['unbanlist_ip']){?><TD class="bg_light"><?Print $row['ip']?></TD><?}?>
 			<?IF($VA_setup['unbanlist_nick']){?><TD class="bg_light"><?Print $row['nick'];?></TD><?}?>
